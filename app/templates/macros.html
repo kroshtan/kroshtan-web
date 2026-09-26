@@ -18,3 +18,26 @@
 {% macro service_meta(item) -%}
 <p class="meta"><span>{{ item.duration or item.format }}</span><span class="meta-sep" aria-hidden="true">·</span><span>{{ item.price }}</span></p>
 {%- endmacro %}
+
+{% macro ask_box(ask, site, num) -%}
+<div class="ask" data-ask>
+  {{ section_head(num, ask.heading, 'ask-heading') }}
+  <p class="lead">{{ ask.intro }}</p>
+  <noscript><p class="ask-noscript">This needs JavaScript. You can always email <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p></noscript>
+  <form class="ask-form" data-ask-form hidden
+        data-submitting-label="{{ ask.submitting }}" data-error-message="{{ ask.error }}">
+    <label for="ask-question">{{ ask.label }}</label>
+    <textarea id="ask-question" name="question" rows="5" minlength="10" maxlength="1500" required
+              placeholder="{{ ask.placeholder }}" aria-describedby="ask-privacy ask-count"></textarea>
+    <div class="ask-row">
+      <button class="btn btn-primary" type="submit" data-ask-submit>{{ ask.submit }}</button>
+      <span class="ask-count" id="ask-count" data-ask-count>0 / 1500</span>
+    </div>
+    <p class="ask-privacy" id="ask-privacy">{{ ask.privacy }}</p>
+  </form>
+  <div class="ask-answer" data-ask-answer role="region" aria-labelledby="ask-answer-label" aria-live="polite" aria-busy="false" hidden>
+    <p class="ask-answer-label" id="ask-answer-label">{{ ask.answer_label }}</p>
+    <div class="ask-answer-body" data-ask-body></div>
+  </div>
+</div>
+{%- endmacro %}

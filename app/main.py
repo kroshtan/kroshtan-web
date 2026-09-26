@@ -7,13 +7,17 @@ from contextlib import asynccontextmanager
 from typing import Any
 
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, PlainTextResponse, RedirectResponse, Response
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
 from fastapi.staticfiles import StaticFiles
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from starlette.middleware.gzip import GZipMiddleware
 from starlette.types import Scope
 
 from app import content
+from app.ask import ask_enabled
+from app.ask import router as ask_router
+from app.context import system_prompt
 from app.rendering import STATIC_DIR, templates
 
 logging.basicConfig(level=os.environ.get("LOG_LEVEL", "INFO"), format="%(levelname)s %(name)s: %(message)s")
@@ -55,14 +59,17 @@ class CachedStaticFiles(StaticFiles):
 
 @asynccontextmanager
 async def lifespan(_: FastAPI) -> AsyncIterator[None]:
-    """Load the site config once at startup so a missing KvK number is logged immediately."""
+    """Load the site config and assistant context at startup, so problems are logged immediately."""
     content.site_config()
+    if ask_enabled():
+        system_prompt()
     yield
 
 
 app = FastAPI(title="kroshtan.com", docs_url=None, redoc_url=None, openapi_url=None, lifespan=lifespan)
 app.add_middleware(GZipMiddleware, minimum_size=1024)
 app.mount("/static", CachedStaticFiles(directory=STATIC_DIR), name="static")
+app.include_router(ask_router)
 
 
 @app.middleware("http")
@@ -100,7 +107,7 @@ def render(request: Request, template: str, *, status_code: int = 200, **context
     return templates.TemplateResponse(
         request,
         template,
-        {"site": site, "path": request.url.path, **context},
+        {"site": site, "path": request.url.path, "ask": content.page("ask") if ask_enabled() else None, **context},
         status_code=status_code,
     )
 
@@ -172,6 +179,20 @@ async def sitemap() -> Response:
     urls = "".join(f"<url><loc>{base}{p}</loc></url>" for p in PAGES)
     xml = f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>'
     return Response(xml, media_type="application/xml")
+
+
+@app.exception_handler(RequestValidationError)
+async def invalid_request(request: Request, exc: RequestValidationError) -> Response:
+    """
+    Turn a rejected question into one readable message for the page to show.
+
+    :param request: the incoming request
+    :param exc: the validation error
+    :return: a 422 with ``{"message": ...}``
+    """
+    errors = exc.errors()
+    message = str(errors[0].get("msg", "Invalid request.")).removeprefix("Value error, ") if errors else ""
+    return JSONResponse({"message": message or "Invalid request."}, status_code=422)
 
 
 @app.exception_handler(StarletteHTTPException)

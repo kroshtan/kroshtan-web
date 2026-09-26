@@ -1,0 +1,17 @@
+# The "Can I help with this?" box, shown on the home and contact pages when ANTHROPIC_API_KEY is set.
+heading: Can I help with this?
+intro: >-
+  Describe your problem or question in a few sentences. You'll get a quick, honest first
+  answer on whether it's something I can help with, and which service fits.
+label: Your problem or question
+placeholder: >-
+  e.g. We have a classifier for incoming support tickets that works in a notebook, but it
+  has never run in production. We're on GCP.
+submit: Ask
+submitting: Thinking…
+answer_label: AI-generated answer
+privacy: >-
+  Your question is sent to an external AI service (Anthropic's Claude API) to generate the
+  answer. It isn't stored on this site and isn't used for anything else; the site only
+  counts how many questions are asked. Don't include confidential or personal information.
+error: Something went wrong. Please email me directly instead.

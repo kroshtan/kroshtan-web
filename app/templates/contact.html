@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import section_head, email_block %}
+{% from "macros.html" import section_head, email_block, ask_box %}
 {% block main %}
 <div class="wrap page">
   <header class="page-head">
@@ -9,10 +9,12 @@
 
   {{ email_block(site, page.copy_label, page.copied_label) }}
 
-  {% block ask %}{% endblock %}
+  {% if ask %}
+  <section class="section" aria-labelledby="ask-heading">{{ ask_box(ask, site, 1) }}</section>
+  {% endif %}
 
   <section class="section" aria-labelledby="elsewhere">
-    {{ section_head(1, page.links_heading, 'elsewhere') }}
+    {{ section_head(2 if ask else 1, page.links_heading, 'elsewhere') }}
     <ul class="link-list" role="list">
       <li><span class="link-label">GitHub</span><a href="{{ site.github_url }}">{{ site.github_url | replace('https://', '') }}</a></li>
       <li><span class="link-label">LinkedIn</span>

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import section_head, email_block, service_meta %}
+{% from "macros.html" import section_head, email_block, service_meta, ask_box %}
 {% block title %}{{ page.title }}{% endblock %}
 {% block main %}
 <section class="hero">
@@ -31,11 +31,15 @@
   </div>
 </section>
 
-{% block ask %}{% endblock %}
+{% if ask %}
+<section class="section section-ask" aria-labelledby="ask-heading">
+  <div class="wrap">{{ ask_box(ask, site, 2) }}</div>
+</section>
+{% endif %}
 
 <section class="section cta" aria-labelledby="cta-heading">
   <div class="wrap">
-    {{ section_head(2, page.cta_heading, 'cta-heading') }}
+    {{ section_head(3 if ask else 2, page.cta_heading, 'cta-heading') }}
     <p class="lead">{{ page.cta_body }}</p>
     {{ email_block(site) }}
   </div>

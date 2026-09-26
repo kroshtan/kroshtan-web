@@ -10,6 +10,7 @@ license = "MIT"
 requires-python = ">=3.12"
 
 dependencies = [
+    "anthropic>=1.0",
     "fastapi~=0.136",
     "jinja2~=3.1",
     "markdown~=3.8",
@@ -74,7 +75,7 @@ ignore = [
 
 [tool.ruff.lint.per-file-ignores]
 "__init__.py" = ["F401", "F403"]
-"tests/**" = ["D103", "PLR2004"]
+"tests/**" = ["D102", "D103", "D105", "PLR2004"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["app"]
