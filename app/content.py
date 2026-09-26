@@ -36,6 +36,7 @@ class SiteConfig:
     github_url: str
     source_url: str
     linkedin_url: str | None
+    scholar_url: str | None
     kvk_number: str | None
     vat_id: str | None
     base_url: str
@@ -116,6 +117,7 @@ def site_config() -> SiteConfig:
         github_url=raw["github_url"],
         source_url=raw["source_url"],
         linkedin_url=_clean(raw.get("linkedin_url")),
+        scholar_url=_clean(raw.get("scholar_url")),
         kvk_number=kvk,
         vat_id=_clean(raw.get("vat_id")),
         base_url=raw["base_url"].rstrip("/"),

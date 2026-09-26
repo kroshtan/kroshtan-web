@@ -21,6 +21,9 @@
         {% if site.linkedin_url %}<a href="{{ site.linkedin_url }}">{{ site.linkedin_url | replace('https://', '') | replace('www.', '') }}</a>
         {% else %}<mark class="todo">TODO: LinkedIn URL</mark>{% endif %}
       </li>
+      {% if site.scholar_url %}
+      <li><span class="link-label">Google Scholar</span><a href="{{ site.scholar_url }}">{{ site.scholar_url | replace('https://', '') }}</a></li>
+      {% endif %}
     </ul>
   </section>
 </div>
