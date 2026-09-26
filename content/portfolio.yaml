@@ -1,6 +1,6 @@
 title: Portfolio
 heading: Portfolio
-lead: Publications, public projects and talks.
+lead: Public projects, publications and talks.
 
 publications_heading: Publications
 publications:
@@ -26,6 +26,9 @@ publications:
     url: https://fse.studenttheses.ub.rug.nl/18139/
 
 projects_heading: Projects
+projects_intro: >-
+  These projects are all open source, this website included, so you can read how they're
+  built rather than take my word for it.
 projects_empty: >-
   Public projects will be listed here. Until then, see [GitHub](https://github.com/Kroshtan).
 # Add public projects here. Fields: title, description, url, tags.
