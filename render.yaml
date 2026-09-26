@@ -18,3 +18,19 @@ services:
     envVars:
       - key: CANONICAL_HOST
         value: kroshtan.com
+      # Phase 2, "Can I help with this?". The box stays hidden until the key is set.
+      - key: ANTHROPIC_API_KEY
+        sync: false # entered in the dashboard, never committed
+      - key: LLM_MODEL
+        value: claude-sonnet-5
+      - key: LLM_MAX_TOKENS
+        value: "1200"
+      - key: DAILY_REQUEST_CAP
+        value: "100"
+      - key: RATE_LIMIT_PER_HOUR
+        value: "5"
+      - key: RATE_LIMIT_PER_DAY
+        value: "20"
+      # Render mounts Secret Files at /etc/secrets/. Add private context there (see README).
+      - key: PRIVATE_DIR
+        value: /etc/secrets

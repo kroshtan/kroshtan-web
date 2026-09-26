@@ -11,6 +11,7 @@ RUN uv sync --frozen --no-dev --no-cache
 # ── Source ───────────────────────────────────────────────────────────────────
 COPY app/ ./app/
 COPY content/ ./content/
+COPY prompts/ ./prompts/
 
 RUN addgroup --system app && adduser --system --ingroup app app && chown -R app:app /app
 USER app
@@ -21,6 +22,7 @@ ENV PATH="/app/.venv/bin:$PATH" \
 
 EXPOSE 10000
 
-# Render sets $PORT. The container is only reachable through Render's proxy, so trusting its forwarded
-# headers from any peer is safe here.
-CMD ["sh", "-c", "exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT} --proxy-headers --forwarded-allow-ips='*' --no-server-header"]
+# Render sets $PORT. --proxy-headers is for the scheme (X-Forwarded-Proto) only; the client address used for rate
+# limiting is resolved in app/limits.py, because uvicorn's '*' trusts the client-controlled leftmost
+# X-Forwarded-For entry. Access logs are off so visitor IPs are not logged.
+CMD ["sh", "-c", "exec uvicorn app.main:app --host 0.0.0.0 --port ${PORT} --proxy-headers --forwarded-allow-ips='*' --no-server-header --no-access-log"]
