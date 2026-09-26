@@ -28,7 +28,7 @@ publications:
 projects_heading: Projects
 projects_intro: >-
   These projects are all open source, this website included, so you can read how they're
-  built rather than take my word for it.
+  built.
 projects_empty: >-
   Public projects will be listed here. Until then, see [GitHub](https://github.com/Kroshtan).
 # Add public projects here. Fields: title, description, url, tags.
@@ -52,6 +52,15 @@ projects:
       billing show how it would run as a real service.
     url: https://github.com/kroshtan/veridex_backend
     tags: [python, fastapi, langgraph, llm, agents, postgres]
+  - title: esp-killer
+    description: >-
+      Server-side detection of likely wallhack (ESP) users in the game The Isle: Evrima, from
+      player movement alone. A read-only agent next to the game server polls positions over
+      RCON; the backend scores beelines to out-of-sight players, ambushes and time to contact
+      against a time-shifted null, and alerts admins for human review. On simulated servers it
+      flagged every full-time cheater within six hours, and 1 in 276 honest players.
+    url: https://github.com/kroshtan/esp-killer
+    tags: [python, fastapi, anomaly-detection, statistics, simulation, rcon]
 
 speaking_heading: Speaking
 talks:
