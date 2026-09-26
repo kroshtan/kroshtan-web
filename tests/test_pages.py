@@ -91,7 +91,18 @@ def test_todo_placeholders_are_highlighted() -> None:
     assert mark_todos("<p>Nothing to do here.</p>") == "<p>Nothing to do here.</p>"
 
 
-def test_example_projects_are_labelled(client: TestClient) -> None:
+def test_projects_render(client: TestClient) -> None:
+    html = client.get("/portfolio").text
+    for project in content.page("portfolio")["projects"]:
+        assert project["title"] in html
+    assert 'class="empty-state"' not in html
+
+
+def test_example_projects_are_labelled(client: TestClient, content_dir: Path) -> None:
+    portfolio = content_dir / "portfolio.yaml"
+    data = yaml.safe_load(portfolio.read_text())
+    data["projects"] = [{"example": True, "title": "Example project", "description": "An example."}]
+    portfolio.write_text(yaml.safe_dump(data))
     html = client.get("/portfolio").text
     assert "Example" in html
     assert 'class="empty-state"' in html

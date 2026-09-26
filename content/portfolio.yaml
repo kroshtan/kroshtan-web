@@ -19,14 +19,16 @@ projects_heading: Projects
 projects_empty: >-
   Public projects will be listed here. Until then, see [GitHub](https://github.com/Kroshtan).
 # Add public projects here. Fields: title, description, url, tags.
-# Items with `example: true` are shown with an "Example" label; delete it once real projects are in.
+# Items with `example: true` are shown with an "Example" label.
 projects:
-  - example: true
-    title: Example project
+  - title: kroshtan.com
     description: >-
-      A one- or two-sentence description of what the project does and why it's interesting.
-    url: https://github.com/Kroshtan
-    tags: [example, python]
+      This website. Its "Can I help with this?" box streams an honest fit assessment from
+      Claude, grounded in the site's own content, with per-visitor rate limits and a daily
+      cost cap. Every push is linted, tested and built into a container image on GitHub
+      Actions, then deployed to Render through a deploy hook.
+    url: https://github.com/kroshtan/kroshtan-web
+    tags: [python, fastapi, llm, claude-api, ci/cd, docker]
 
 speaking_heading: Speaking
 talks:
