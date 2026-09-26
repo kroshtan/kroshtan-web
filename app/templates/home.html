@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% from "macros.html" import section_head, email_block, service_meta %}
+{% block title %}{{ page.title }}{% endblock %}
+{% block main %}
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">{{ page.eyebrow }}</p>
+    <h1 class="hero-title">{{ page.headline }}</h1>
+    <p class="hero-intro">{{ page.intro }}</p>
+    <p class="hero-actions">
+      <a class="btn btn-primary" href="mailto:{{ site.email }}">Email {{ site.email }}</a>
+      <a class="btn btn-ghost" href="/services">{{ page.services_link }}</a>
+    </p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="what-i-do">
+  <div class="wrap">
+    {{ section_head(1, page.services_heading, 'what-i-do') }}
+    <ol class="card-grid" role="list">
+      {% for s in services.services %}
+      <li class="card">
+        <span class="card-index" aria-hidden="true">{{ '%02d' % loop.index }}</span>
+        <h3 class="card-title"><a class="card-link" href="/services#{{ s.id }}">{{ s.name }}</a></h3>
+        {{ service_meta(s) }}
+        <p>{{ s.summary }}</p>
+        <span class="card-more" aria-hidden="true">Details →</span>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+{% block ask %}{% endblock %}
+
+<section class="section cta" aria-labelledby="cta-heading">
+  <div class="wrap">
+    {{ section_head(2, page.cta_heading, 'cta-heading') }}
+    <p class="lead">{{ page.cta_body }}</p>
+    {{ email_block(site) }}
+  </div>
+</section>
+{% endblock %}

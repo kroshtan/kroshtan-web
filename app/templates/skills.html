@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% from "macros.html" import section_head %}
+{% block main %}
+<div class="wrap page">
+  <header class="page-head">
+    <h1>{{ page.heading }}</h1>
+    <p class="lead">{{ page.lead }}</p>
+  </header>
+  {% for g in page.groups %}
+  <section class="skill-group" aria-labelledby="skill-{{ loop.index }}">
+    {{ section_head(loop.index, g.name, 'skill-' ~ loop.index) }}
+    <p>{{ g.summary }}</p>
+    <ul class="tags" role="list">
+      {% for item in g["items"] %}
+      <li class="tag">{{ item | mdi }}</li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}

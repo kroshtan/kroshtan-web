@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "macros.html" import section_head %}
+{% block main %}
+<div class="wrap page">
+  <header class="page-head">
+    <h1>{{ page.heading }}</h1>
+    <p class="lead">{{ page.lead }}</p>
+  </header>
+
+  <div class="about-grid">
+    <div class="prose">{{ body | md }}</div>
+    <aside class="facts" aria-label="At a glance">
+      <dl>
+        {% for f in page.facts %}
+        <div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>
+        {% endfor %}
+      </dl>
+    </aside>
+  </div>
+
+  <section class="section" aria-labelledby="background">
+    {{ section_head(1, page.timeline_heading, 'background') }}
+    <ol class="timeline" role="list">
+      {% for t in page.timeline %}
+      <li>
+        <span class="timeline-period">{{ t.period }}</span>
+        <span class="timeline-role">{{ t.role }}</span>
+        <span class="timeline-org">{{ t.org }}</span>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+</div>
+{% endblock %}

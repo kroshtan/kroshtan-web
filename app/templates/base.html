@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ page.title if page and page.title else site.name }}{% endblock %} · {{ site.name }}</title>
+  <meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f5f3ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#131312" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="{{ site.base_url }}{{ path if path != '/' else '/' }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ self.title() }}">
+  <meta property="og:description" content="{{ self.description() }}">
+  <meta property="og:url" content="{{ site.base_url }}{{ path }}">
+  <link rel="icon" href="{{ static_url('favicon.svg') }}" type="image/svg+xml">
+  <link rel="preload" href="{{ static_url('fonts/jetbrains-mono-latin-wght.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ static_url('fonts/ibm-plex-sans-latin-400-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ static_url('css/site.css') }}">
+  <script src="{{ static_url('js/site.js') }}" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  {% if site.warnings %}
+  <div class="config-warning" role="alert">
+    {% for w in site.warnings %}<p><strong>Config:</strong> {{ w }}</p>{% endfor %}
+  </div>
+  {% endif %}
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="/" {% if path == '/' %}aria-current="page"{% endif %}>
+        <span class="wordmark-name">kroshtan</span><span class="wordmark-cursor" aria-hidden="true">_</span>
+      </a>
+      <nav aria-label="Main">
+        <ul class="nav-list">
+          {% for item in site.nav %}
+          <li><a href="{{ item.href }}" {% if path == item.href %}aria-current="page"{% endif %}>{{ item.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    {% block main %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <p class="footer-id"><strong>{{ site.name }}</strong> · {{ site.location }}</p>
+      <dl class="footer-legal">
+        <div>
+          <dt>KvK</dt>
+          <dd>{% if site.kvk_number %}{{ site.kvk_number }}{% else %}<mark class="todo">TODO: KvK number</mark>{% endif %}</dd>
+        </div>
+        {% if site.vat_id %}
+        <div><dt>VAT</dt><dd>{{ site.vat_id }}</dd></div>
+        {% endif %}
+      </dl>
+      <ul class="footer-links">
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        <li><a href="{{ site.source_url }}">Source code</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

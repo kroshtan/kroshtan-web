@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% from "macros.html" import section_head %}
+{% block main %}
+<div class="wrap page">
+  <header class="page-head">
+    <h1>{{ page.heading }}</h1>
+    <p class="lead">{{ page.lead }}</p>
+  </header>
+
+  <section class="section" aria-labelledby="publications">
+    {{ section_head(1, page.publications_heading, 'publications') }}
+    <ol class="entries" role="list">
+      {% for p in page.publications %}
+      <li class="entry">
+        <span class="entry-year">{{ p.year }}</span>
+        <div>
+          <p class="entry-title">
+            {% if p.url is not todo %}<a href="{{ p.url }}">{{ p.title | mdi }}</a>{% else %}{{ p.title | mdi }}{% endif %}
+          </p>
+          <p class="entry-meta">{{ p.authors | mdi }} · {{ p.venue }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="section" aria-labelledby="projects">
+    {{ section_head(2, page.projects_heading, 'projects') }}
+    {% if not projects %}
+    <div class="empty-state">
+      <p>{{ page.projects_empty | mdi }}</p>
+    </div>
+    {% endif %}
+    {% set shown = projects + examples %}
+    {% if shown %}
+    <ul class="card-grid" role="list">
+      {% for p in shown %}
+      <li class="card{% if p.example %} card-example{% endif %}">
+        {% if p.example %}<span class="badge">Example</span>{% endif %}
+        <h3 class="card-title">
+          {% if p.url %}<a class="card-link" href="{{ p.url }}">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}
+        </h3>
+        <p>{{ p.description }}</p>
+        {% if p.tags %}
+        <ul class="tags tags-small" role="list" aria-label="Tags">
+          {% for tag in p.tags %}<li class="tag">{{ tag }}</li>{% endfor %}
+        </ul>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </section>
+
+  <section class="section" aria-labelledby="speaking">
+    {{ section_head(3, page.speaking_heading, 'speaking') }}
+    <ol class="entries" role="list">
+      {% for t in page.talks %}
+      <li class="entry">
+        <span class="entry-year">{{ t.event }}</span>
+        <div>
+          <p class="entry-title">
+            {% if t.url is not todo %}<a href="{{ t.url }}">{{ t.title | mdi }}</a>{% else %}{{ t.title | mdi }}{% endif %}
+          </p>
+          {% if t.status %}<p class="entry-meta"><span class="badge badge-muted">{{ t.status }}</span></p>{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+</div>
+{% endblock %}

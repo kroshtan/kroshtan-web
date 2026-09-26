@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% from "macros.html" import section_head, service_meta, email_block %}
+{% block main %}
+<div class="wrap page">
+  <header class="page-head">
+    <h1>{{ page.heading }}</h1>
+    <p class="lead">{{ page.lead }}</p>
+  </header>
+
+  {% for s in page.services %}
+  <article class="service" id="{{ s.id }}" aria-labelledby="{{ s.id }}-title">
+    {{ section_head(loop.index, s.name, s.id ~ '-title') }}
+    {{ service_meta(s) }}
+    <div class="service-body">
+      <div class="prose">{{ s.body | md }}</div>
+      <div class="service-side">
+        <h3>{{ page.deliverables_label }}</h3>
+        <ul class="checklist">
+          {% for d in s.deliverables %}<li>{{ d }}</li>{% endfor %}
+        </ul>
+        <p class="audience"><strong>{{ page.audience_label }}:</strong> {{ s.audience }}</p>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+
+  <section class="section teaching" id="teaching" aria-labelledby="teaching-title">
+    <header class="page-head">
+      <h2 id="teaching-title">{{ teaching.heading }}</h2>
+      <p class="lead">{{ teaching.lead }}</p>
+    </header>
+    <div class="teaching-grid">
+      {% for t in teaching.offerings %}
+      <article class="card card-static" id="{{ t.id }}" aria-labelledby="{{ t.id }}-title">
+        <h3 class="card-title" id="{{ t.id }}-title">{{ t.name }}</h3>
+        {{ service_meta(t) }}
+        <div class="prose">{{ t.body | md }}</div>
+        {% if t.topics %}
+        <h4>{{ t.topics_label }}</h4>
+        <ol class="topics">{% for topic in t.topics %}<li>{{ topic }}</li>{% endfor %}</ol>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="section cta" aria-labelledby="services-cta">
+    <h2 id="services-cta">Interested?</h2>
+    <p class="lead">Email me with a short description of your situation.</p>
+    {{ email_block(site) }}
+  </section>
+</div>
+{% endblock %}
