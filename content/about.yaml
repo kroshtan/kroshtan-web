@@ -5,11 +5,14 @@ lead: Independent ML/AI engineer and architect, based in Groningen.
 facts:
   - { label: Based in, value: "Groningen, the Netherlands" }
   - { label: Works, value: "Remote or hybrid" }
-  - { label: Engagements, value: "Short: weeks to a few months" }
+  - { label: Engagements, value: "Short: 2 weeks to 3 months" }
+  - { label: Available, value: "From November 2026" }
+  - { label: Languages, value: "Dutch (native), English (fluent)" }
 
 timeline_heading: Background
 timeline:
   - { period: "Dec 2024 – Sep 2026", role: "MLOps Engineer", org: "Springer Nature" }
-  - { period: "2021 – 2024", role: "ML Engineer", org: "Web-IQ, Groningen" }
-  - { period: "2021", role: "Deep learning intern", org: "Intel" }
-  - { period: "", role: "BSc & MSc Artificial Intelligence", org: "University of Groningen" }
+  - { period: "Nov 2021 – Nov 2024", role: "Machine Learning Engineer", org: "Web-IQ, Groningen" }
+  - { period: "Jan – Jul 2021", role: "Deep Learning Intern", org: "Intel, Groningen" }
+  - { period: "2018 – 2021", role: "MSc Artificial Intelligence", org: "University of Groningen" }
+  - { period: "2014 – 2018", role: "BSc Artificial Intelligence", org: "University of Groningen" }

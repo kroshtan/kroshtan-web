@@ -7,33 +7,64 @@ lead: >-
 # on the page until they are replaced with real tools.
 groups:
   - name: ML engineering
-    summary: Building models and finding out honestly how well they work.
+    summary: >-
+      Designing, training and optimising models for text, images and video, from scratch or
+      through transfer learning, and finding out honestly how well they work.
     items:
-      - Model development
+      - NLP
+      - Computer vision
+      - Multimodal (vision + language)
+      - Recommender systems
+      - Text summarisation
+      - Image segmentation
+      - Transfer learning
       - Evaluation
-      - "TODO: frameworks and libraries"
 
   - name: MLOps
     summary: Getting models into production and keeping them healthy there.
     items:
-      - CI/CD
-      - Containers
       - Kubernetes
       - GCP
-      - Monitoring
-      - "TODO: specific tools"
+      - Docker
+      - CI/CD
+      - Monitoring and reliability of live ML services
 
   - name: Data pipelines
-    summary: Moving and preparing the data that models depend on.
+    summary: >-
+      Moving and preparing the data that models depend on, for both training and live
+      inference.
     items:
-      - "TODO: tools"
+      - Multi-layered ETL pipelines
+      - BigQuery
+      - Google Cloud Storage
+      - Pinecone and other vector stores
+      - Large-scale scraped web data
 
   - name: LLMs and generative AI
     summary: Putting language models to work inside real products.
     items:
-      - "TODO: tools and techniques"
+      - Embeddings and semantic search
+      - LLM pipelines and agents (LangGraph)
+      - Structured LLM output
+      - Claude API
+      - Text summarisation
 
   - name: System architecture
-    summary: Designing the services and APIs that ML lives inside.
+    summary: >-
+      Designing the services and APIs that ML lives inside, from lightweight inference wrappers
+      to deep-learning services.
     items:
-      - "TODO: tools and techniques"
+      - Python
+      - FastAPI
+      - API design
+      - Software architecture
+      - PostgreSQL
+
+  - name: Project lead
+    summary: Taking a project from question to delivery, with the people involved kept in the loop.
+    items:
+      - Stakeholder management
+      - Planning and delivery
+      - EU Horizon 2020 projects
+      - Funding applications
+      - Agile
