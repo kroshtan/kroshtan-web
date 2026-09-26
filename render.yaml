@@ -1,0 +1,20 @@
+# Render Blueprint for kroshtan.com.
+#
+# The service runs a prebuilt image from GHCR; Render does not build from the repository. GitHub Actions
+# builds and pushes the image on every push to main, then calls this service's deploy hook with the new
+# digest (see .github/workflows/ci.yaml and the README).
+services:
+  - type: web
+    name: kroshtan-web
+    runtime: image
+    image:
+      url: ghcr.io/kroshtan/kroshtan-web:latest
+    plan: starter
+    region: frankfurt
+    healthCheckPath: /healthz
+    domains:
+      - kroshtan.com
+      - www.kroshtan.com
+    envVars:
+      - key: CANONICAL_HOST
+        value: kroshtan.com
