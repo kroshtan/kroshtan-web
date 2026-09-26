@@ -1,0 +1,15 @@
+# Private context for the "Can I help with this?" assistant. Never commit it.
+private/*
+!private/README.md
+
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.env
+.DS_Store
