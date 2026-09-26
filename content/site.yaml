@@ -1,0 +1,28 @@
+# Site-wide settings. Everything visible on the site lives in content/; nothing is hard-coded in templates.
+
+name: Kroshtan
+owner: Floris van Beers
+email: freelancing@kroshtan.com
+location: Groningen, the Netherlands
+base_url: https://kroshtan.com
+description: >-
+  Kroshtan is Floris van Beers, an independent ML/AI engineer in Groningen.
+  I take AI from prototype to production.
+
+github_url: https://github.com/Kroshtan
+source_url: https://github.com/Kroshtan/kroshtan-web
+linkedin_url: "TODO: LinkedIn URL"
+
+# REQUIRED. Dutch law requires the Chamber of Commerce (KvK) number on a business website.
+# While this is empty the footer shows a visible warning on every page.
+kvk_number: ""
+
+# Optional. Shown in the footer when filled in (format: NL000000000B00).
+vat_id: ""
+
+nav:
+  - { href: /about, label: About }
+  - { href: /skills, label: Skills }
+  - { href: /services, label: Services }
+  - { href: /portfolio, label: Portfolio }
+  - { href: /contact, label: Contact }

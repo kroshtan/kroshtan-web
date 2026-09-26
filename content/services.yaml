@@ -1,0 +1,76 @@
+title: Services
+heading: Services
+lead: Three fixed-scope engagements. Each has a clear start, a clear end and a concrete result.
+
+# `summary` is the short version shown on the home page. Everything else is the full copy.
+services:
+  - id: feasibility
+    name: AI feasibility check
+    duration: 1 week
+    price: €2,950 fixed
+    summary: >-
+      Five days to find out whether your use case can really be solved with AI,
+      before you invest heavily.
+    body: |
+      Not sure whether your use case can really be solved with AI? Many AI projects don't fail on
+      the technology but on the data, or on a use case that turned out not to need a model at all.
+      You want to know that before you invest heavily, not after.
+
+      In five days I assess your use case, your data and your infrastructure. I look at what's
+      there, where the gaps are and what's realistically achievable with the resources you have.
+    deliverables:
+      - An honest go/no-go recommendation, backed by your own data
+      - "A concrete technical approach: which models, which stack, which steps"
+      - An estimate of cost and lead time for the next phase
+      - One decision document, not a report full of fluff
+    audience: >-
+      Organisations that want to "do something with AI" but first want certainty about
+      feasibility.
+
+  - id: production
+    name: From notebook to production
+    duration: 2 to 4 weeks
+    price: from €7,500
+    summary: >-
+      Your team's working model, turned into a production service with CI/CD, monitoring
+      and a proper handover.
+    body: |
+      Your team has a working model. It performs well in the notebook, the results look good,
+      everyone is enthusiastic. And then it sits there for months, because nobody has time to turn
+      it into a real service.
+
+      That's exactly the work I did in recent years for one of the world's largest scientific
+      publishers. I take over your team's model and turn it into a service that runs in production,
+      and keeps running.
+    deliverables:
+      - Your model as a production service, on GCP and Kubernetes or on your own stack
+      - Full CI/CD, so updates go live safely and without manual work
+      - Monitoring, so you notice problems before your users do
+      - Documentation and a handover so your team can run it themselves
+    audience: Teams with a proven model that isn't making the jump to production.
+
+  - id: poc
+    name: ML proof of concept in a month
+    duration: 4 weeks
+    price: from €12,500
+    summary: >-
+      One well-defined use case, your own data, four weeks: a working prototype and an
+      honest verdict.
+    body: |
+      One well-defined use case, your own data, four weeks. Not a slide deck about what might be
+      possible, but a working prototype that shows it.
+
+      Think of a classifier, semantic search over your documents, a recommender or automated
+      document processing. I build it on your data, measure how well it works and tell you honestly
+      whether building further is worth the investment. If it isn't, you'll know that too. That's
+      worth something as well.
+    deliverables:
+      - A working prototype on your own data, not a demo on sample datasets
+      - Measurable results, so you know where you stand
+      - Advice on the step to production, including costs and risks
+      - All code, documented and ready to hand over
+    audience: >-
+      Organisations with a concrete AI idea that want to know within a month whether it works.
+
+deliverables_label: What you get
+audience_label: For

@@ -1,0 +1,31 @@
+heading: Teaching and talks
+lead: For developer teams, students and anyone curious about the technology in the news.
+
+offerings:
+  - id: ai-architecture
+    name: AI architecture for developers
+    format: 3-hour workshop or six weekly sessions
+    price: Pricing on request
+    body: |
+      A course or workshop for students and developer teams on how system design makes AI-driven
+      development effective: writing clearer prompts, spotting structural problems while the AI
+      writes the boilerplate, and reviewing generated code at the level of the system.
+
+      Available as a single 3-hour workshop or a series of six weekly sessions.
+    topics_label: Topics
+    topics:
+      - From notebook to production
+      - Designing services and APIs
+      - Data pipelines
+      - Containers and CI/CD
+      - Monitoring and ML in production
+      - An architecture review of your own project
+
+  - id: tech-talks
+    name: Tech talks for everyone
+    format: Talks and lessons
+    price: Pricing on request
+    body: |
+      Talks and lessons about the technology in the news, such as AI, social media, the internet,
+      online shopping, online gaming and online scams. In plain language, with attention to the
+      risks. For schools, parent evenings, community centres and libraries.

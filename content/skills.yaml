@@ -1,0 +1,39 @@
+title: Skills
+heading: Skills
+lead: >-
+  What I work with, grouped by the kind of problem it solves.
+
+# Each group: name, summary, items. Items starting with "TODO" are shown highlighted
+# on the page until they are replaced with real tools.
+groups:
+  - name: ML engineering
+    summary: Building models and finding out honestly how well they work.
+    items:
+      - Model development
+      - Evaluation
+      - "TODO: frameworks and libraries"
+
+  - name: MLOps
+    summary: Getting models into production and keeping them healthy there.
+    items:
+      - CI/CD
+      - Containers
+      - Kubernetes
+      - GCP
+      - Monitoring
+      - "TODO: specific tools"
+
+  - name: Data pipelines
+    summary: Moving and preparing the data that models depend on.
+    items:
+      - "TODO: tools"
+
+  - name: LLMs and generative AI
+    summary: Putting language models to work inside real products.
+    items:
+      - "TODO: tools and techniques"
+
+  - name: System architecture
+    summary: Designing the services and APIs that ML lives inside.
+    items:
+      - "TODO: tools and techniques"

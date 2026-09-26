@@ -1,0 +1,36 @@
+title: Portfolio
+heading: Portfolio
+lead: Publications, public projects and talks.
+
+publications_heading: Publications
+publications:
+  - year: 2021
+    venue: ICPRAM 2021
+    title: "TODO: paper title"
+    authors: "TODO: co-authors"
+    url: ""
+  - year: 2019
+    venue: ICPRAM 2019
+    title: "TODO: paper title"
+    authors: "TODO: co-authors"
+    url: ""
+
+projects_heading: Projects
+projects_empty: >-
+  Public projects will be listed here. Until then, see [GitHub](https://github.com/Kroshtan).
+# Add public projects here. Fields: title, description, url, tags.
+# Items with `example: true` are shown with an "Example" label; delete it once real projects are in.
+projects:
+  - example: true
+    title: Example project
+    description: >-
+      A one- or two-sentence description of what the project does and why it's interesting.
+    url: https://github.com/Kroshtan
+    tags: [example, python]
+
+speaking_heading: Speaking
+talks:
+  - event: aiGrunn 2026
+    title: "TODO: talk title"
+    status: Pending selection
+    url: ""
