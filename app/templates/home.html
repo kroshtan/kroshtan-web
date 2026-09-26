@@ -1,16 +1,19 @@
 {% extends "base.html" %}
-{% from "macros.html" import section_head, email_block, service_meta, ask_box %}
+{% from "macros.html" import section_head, email_block, service_meta, ask_box, portrait %}
 {% block title %}{{ page.title }}{% endblock %}
 {% block main %}
 <section class="hero">
-  <div class="wrap">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
     <p class="eyebrow">{{ page.eyebrow }}</p>
-    <h1 class="hero-title">{{ page.headline }}</h1>
+    <h1 class="hero-title">{{ page.headline | mdi }}</h1>
     <p class="hero-intro">{{ page.intro }}</p>
     <p class="hero-actions">
       <a class="btn btn-primary" href="mailto:{{ site.email }}">Email {{ site.email }}</a>
       <a class="btn btn-ghost" href="/services">{{ page.services_link }}</a>
     </p>
+    </div>
+    {{ portrait(site, "hero-portrait", "(min-width: 56rem) 22rem, 12rem", eager=True) }}
   </div>
 </section>
 
@@ -20,7 +23,6 @@
     <ol class="card-grid" role="list">
       {% for s in services.services %}
       <li class="card">
-        <span class="card-index" aria-hidden="true">{{ '%02d' % loop.index }}</span>
         <h3 class="card-title"><a class="card-link" href="/services#{{ s.id }}">{{ s.name }}</a></h3>
         {{ service_meta(s) }}
         <p>{{ s.summary }}</p>

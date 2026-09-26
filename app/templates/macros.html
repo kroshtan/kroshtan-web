@@ -1,6 +1,5 @@
 {% macro section_head(num, heading, id=None, level=2) -%}
 <div class="section-head">
-  <span class="section-num" aria-hidden="true">§ {{ '%02d' % num }}</span>
   <h{{ level }} {% if id %}id="{{ id }}"{% endif %}>{{ heading }}</h{{ level }}>
 </div>
 {%- endmacro %}
@@ -40,4 +39,12 @@
     <div class="ask-answer-body" data-ask-body></div>
   </div>
 </div>
+{%- endmacro %}
+
+{% macro portrait(site, cls, sizes, eager=False) -%}
+<picture>
+  <source type="image/webp" srcset="{{ static_url('img/portrait-480.webp') }} 480w, {{ static_url('img/portrait-960.webp') }} 960w" sizes="{{ sizes }}">
+  <img class="{{ cls }}" src="{{ static_url('img/portrait-480.jpg') }}" width="480" height="480" alt="{{ site.portrait_alt }}"
+       {% if eager %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+</picture>
 {%- endmacro %}

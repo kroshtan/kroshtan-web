@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "macros.html" import section_head %}
+{% from "macros.html" import section_head, portrait %}
 {% block main %}
 <div class="wrap page">
   <header class="page-head">
@@ -10,6 +10,7 @@
   <div class="about-grid">
     <div class="prose">{{ body | md }}</div>
     <aside class="facts" aria-label="At a glance">
+      {{ portrait(site, "about-portrait", "(min-width: 52rem) 17rem, 12rem", eager=True) }}
       <dl>
         {% for f in page.facts %}
         <div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>

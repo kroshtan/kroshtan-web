@@ -5,7 +5,7 @@ Groningen. Python + FastAPI, server-rendered Jinja templates, one small styleshe
 JavaScript. No frontend framework, no trackers, no third-party requests from the browser. One API endpoint,
 `POST /api/ask`, lets visitors check whether their problem is a fit; it calls the Anthropic API from the server.
 
-MIT licensed; see [LICENSE](LICENSE). The fonts (JetBrains Mono, IBM Plex Sans) are self-hosted under the SIL
+MIT licensed; see [LICENSE](LICENSE). The fonts (Fraunces, Source Sans 3) are self-hosted under the SIL
 Open Font License; see `app/static/fonts/`.
 
 ```

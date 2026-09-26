@@ -40,6 +40,7 @@ class SiteConfig:
     vat_id: str | None
     base_url: str
     description: str
+    portrait_alt: str = ""
     nav: list[dict[str, str]] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
 
@@ -119,6 +120,7 @@ def site_config() -> SiteConfig:
         vat_id=_clean(raw.get("vat_id")),
         base_url=raw["base_url"].rstrip("/"),
         description=raw["description"],
+        portrait_alt=raw.get("portrait_alt", ""),
         nav=raw.get("nav") or [],
         warnings=warnings,
     )
