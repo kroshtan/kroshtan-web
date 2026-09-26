@@ -5,15 +5,25 @@ lead: Publications, public projects and talks.
 publications_heading: Publications
 publications:
   - year: 2021
+    venue: Journal of Intelligent & Robotic Systems 103 (1)
+    title: "The state of lifelong learning in service robots: current bottlenecks in object perception and manipulation"
+    authors: S. H. Kasaei, J. Melsen, **F. van Beers**, C. Steenkist, K. Voncina
+    url: https://link.springer.com/article/10.1007/s10846-021-01458-3
+  - year: 2021
     venue: ICPRAM 2021
-    title: "TODO: paper title"
-    authors: "TODO: co-authors"
-    url: ""
+    title: Capsule networks with intersection over union loss for binary image segmentation
+    authors: "**F. van Beers**"
+    url: https://www.scitepress.org/Papers/2021/103013/103013.pdf
   - year: 2019
     venue: ICPRAM 2019
-    title: "TODO: paper title"
-    authors: "TODO: co-authors"
-    url: ""
+    title: Deep neural networks with intersection over union loss for binary image segmentation
+    authors: "**F. van Beers**, A. Lindström, E. Okafor, M. Wiering"
+    url: https://research.rug.nl/files/87088047/ICPRAM_2019_35.pdf
+  - year: 2018
+    venue: Bachelor's thesis, Artificial Intelligence, University of Groningen
+    title: Using intersection over union loss to improve binary image segmentation
+    authors: "**F. van Beers**"
+    url: https://fse.studenttheses.ub.rug.nl/18139/
 
 projects_heading: Projects
 projects_empty: >-
@@ -29,6 +39,16 @@ projects:
       Actions, then deployed to Render through a deploy hook.
     url: https://github.com/kroshtan/kroshtan-web
     tags: [python, fastapi, llm, claude-api, ci/cd, docker]
+  - title: Veridex
+    description: >-
+      A prototype backend that scores e-commerce product pages for scam and dropshipping
+      signals. A LangGraph pipeline classifies the page, fans out to independent checks
+      (listing copy, dropship-app fingerprints, review integrity, claim plausibility, domain
+      age, image EXIF and reverse image search) in parallel, and has an LLM judge condense
+      their evidence into a 0–100 reliability score. Accounts, daily quotas and Paddle
+      billing show how it would run as a real service.
+    url: https://github.com/kroshtan/veridex_backend
+    tags: [python, fastapi, langgraph, llm, agents, postgres]
 
 speaking_heading: Speaking
 talks:
