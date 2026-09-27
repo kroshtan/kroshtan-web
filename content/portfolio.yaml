@@ -57,8 +57,7 @@ projects:
       Server-side detection of likely wallhack (ESP) users in the game The Isle: Evrima, from
       player movement alone. A read-only agent next to the game server polls positions over
       RCON; the backend scores beelines to out-of-sight players, ambushes and time to contact
-      against a time-shifted null, and alerts admins for human review. On simulated servers it
-      flagged every full-time cheater within six hours, and 1 in 276 honest players.
+      against a time-shifted null, and alerts admins for human review.
     url: https://github.com/kroshtan/esp-killer
     tags: [python, fastapi, anomaly-detection, statistics, simulation, rcon]
 
