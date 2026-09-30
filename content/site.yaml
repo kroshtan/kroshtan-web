@@ -18,8 +18,7 @@ linkedin_url: https://www.linkedin.com/in/floris-van-beers-198095181
 scholar_url: https://scholar.google.com/citations?user=enMBnW0AAAAJ
 
 # REQUIRED. Dutch law requires the Chamber of Commerce (KvK) number on a business website.
-# While this is empty the footer shows a visible warning on every page.
-kvk_number: ""
+kvk_number: "42178948"
 
 # Optional. Shown in the footer when filled in (format: NL000000000B00).
 vat_id: ""

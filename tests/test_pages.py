@@ -39,24 +39,23 @@ def test_edited_content_shows_up(client: TestClient, content_dir: Path) -> None:
     assert "A headline only this test knows." in client.get("/").text
 
 
-def test_missing_kvk_shows_a_visible_warning(client: TestClient, content_dir: Path) -> None:
+def test_missing_kvk_shows_a_placeholder(client: TestClient, content_dir: Path) -> None:
     site = content_dir / "site.yaml"
     data = yaml.safe_load(site.read_text())
     data["kvk_number"] = ""
     site.write_text(yaml.safe_dump(data))
     html = client.get("/").text
-    assert 'class="config-warning"' in html
-    assert "KvK number missing" in html
+    assert "TODO: KvK number" in html
 
 
-def test_filled_kvk_hides_the_warning(client: TestClient, content_dir: Path) -> None:
+def test_filled_kvk_is_shown_in_the_footer(client: TestClient, content_dir: Path) -> None:
     site = content_dir / "site.yaml"
     data = yaml.safe_load(site.read_text())
     data["kvk_number"] = "12345678"
     data["vat_id"] = "NL000000000B01"
     site.write_text(yaml.safe_dump(data))
     html = client.get("/").text
-    assert 'class="config-warning"' not in html
+    assert "TODO: KvK number" not in html
     assert "12345678" in html
     assert "NL000000000B01" in html
 

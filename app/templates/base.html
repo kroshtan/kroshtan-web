@@ -23,12 +23,6 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  {% if site.warnings %}
-  <div class="config-warning" role="alert">
-    {% for w in site.warnings %}<p><strong>Config:</strong> {{ w }}</p>{% endfor %}
-  </div>
-  {% endif %}
-
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="wordmark" href="/" {% if path == '/' %}aria-current="page"{% endif %}>

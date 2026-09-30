@@ -43,7 +43,6 @@ class SiteConfig:
     description: str
     portrait_alt: str = ""
     nav: list[dict[str, str]] = field(default_factory=list)
-    warnings: list[str] = field(default_factory=list)
 
 
 def _clean(value: Any) -> str | None:
@@ -91,24 +90,20 @@ def site_config() -> SiteConfig:
     Load and validate ``content/site.yaml``.
 
     The KvK number is required by Dutch law (Handelsregisterbesluit art. 42) on a business website. It is
-    not a hard startup failure — a missing number should not take the site down — but it produces a
-    warning that the footer shows to every visitor until it is filled in, which is hard to overlook.
+    not a hard startup failure — a missing number should not take the site down — but it is logged as a
+    warning at startup, and the footer shows a highlighted placeholder until it is filled in.
 
     :return: the validated config
     """
     raw = read_yaml("site.yaml")
-    warnings: list[str] = []
 
     kvk = _clean(raw.get("kvk_number"))
     if kvk is None:
-        warnings.append(
+        logger.warning(
             "KvK number missing — required on a Dutch business website. Set kvk_number in content/site.yaml."
         )
     elif not (kvk.isdigit() and len(kvk) == 8):
-        warnings.append(f"KvK number {kvk!r} does not look like an 8-digit Chamber of Commerce number.")
-
-    for message in warnings:
-        logger.warning(message)
+        logger.warning("KvK number %r does not look like an 8-digit Chamber of Commerce number.", kvk)
 
     return SiteConfig(
         name=raw["name"],
@@ -124,7 +119,6 @@ def site_config() -> SiteConfig:
         description=raw["description"],
         portrait_alt=raw.get("portrait_alt", ""),
         nav=raw.get("nav") or [],
-        warnings=warnings,
     )
 
 

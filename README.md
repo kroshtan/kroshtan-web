@@ -57,8 +57,8 @@ Long fields are Markdown. Any value starting with `TODO` is shown on the page wi
 nothing unfinished can go live unnoticed; `make todos` lists them.
 
 **KvK number.** Dutch law requires the Chamber of Commerce number on a business website. While
-`kvk_number` in `content/site.yaml` is empty, every page shows a warning banner and the server logs a warning
-at startup. The VAT ID is optional and appears in the footer only when set.
+`kvk_number` in `content/site.yaml` is empty, the footer shows a highlighted `TODO` and the server logs a
+warning at startup. The VAT ID is optional and appears in the footer only when set.
 
 **Projects.** Add public projects to `projects:` in `content/portfolio.yaml` (`title`, `description`, `url`,
 `tags`). The entry with `example: true` is a labelled example; delete it once real projects are in.
